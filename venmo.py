@@ -14,23 +14,16 @@ def venmoLogin():
 
 
 def venmoSend():
+    value = request.json.get('value', None)
+    note = request.json.get('note', None)
+    username = request.json.get('username', None)
+
     # Send a payment to a user
-    payment = venmo.payment.request_money(1.00, 'Test', 'user-id')
-
-    # Send a payment to a user's phone number
-    payment = venmo.payment.request_money(1.00, 'Test', phone='1234567890')
-
-    # Send a payment to a user's email
-    payment = venmo.payment.request_money(1.00, 'Test')
-
-
+    payment = venmo.payment.request_money(value, note, user_id)
 
 def venmoRequest():
+    value = request.json.get('value', None)
+    note = request.json.get('note', None)
+    username = request.json.get('username', None)
     # Request money from a user
-    payment = venmo.payment.request_money(1.00, 'Test', 'user-id')
-
-    # Request money from a user's phone number
-    payment = venmo.payment.request_money(1.00, 'Test', phone='1234567890')
-
-    # Request money from a user's email
-    payment = venmo.payment.request_money(1.00, 'Test',
+    payment = venmo.payment.request_money(1.00, note, username)
