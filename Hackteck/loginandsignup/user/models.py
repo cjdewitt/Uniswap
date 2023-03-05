@@ -40,11 +40,12 @@ class User:
 
     return jsonify({ "error": "Signup failed" }), 400
   
+  #f
   def signout(self):
     session.clear()
     return redirect('/')
   
-  def login(self):
+  def loginEmail(self):
 
     email = request.form.get('email')
     password = request.form.get('password')
@@ -62,3 +63,6 @@ class User:
       return self.start_session(user)
   
     # return jsonify({ "error": "Invalid login credentials" }), 401
+
+  def loginGoogle(self):
+    authorization
