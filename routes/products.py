@@ -69,5 +69,7 @@ def post_product():
         # Render the product form
         return render_template("post_product.html")
 
+
+
 if __name__ == "__main__":
     app.run(debug=True)

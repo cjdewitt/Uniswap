@@ -17,7 +17,14 @@ def user_handler():
         # Handle POST request to create a new user
         return 'Creating a new user...'
 
-
+@app.route('/products', methods=['GET', 'POST'])
+def product_handler():
+    if request.method == 'GET':
+        # Handle GET request to retrieve products
+        return 'Retrieving products...'
+    elif request.method == 'POST':
+        # Handle POST request to create a new product
+        return 'Creating a new product...'
 
 
 
