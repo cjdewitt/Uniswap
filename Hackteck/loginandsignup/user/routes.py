@@ -13,3 +13,6 @@ def signout():
 @app.route('/user/login', methods=['POST'])
 def login():
   return User().login()
+
+@app.route('/products', methods=['GET', 'POST'])
+def product

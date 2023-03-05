@@ -29,6 +29,12 @@ class User:
     if db.users.find_one({ "email": user['email'] }):
       return jsonify({ "error": "Email address already in use" }), 400
 
+    # check to make sure email is USC email
+    index = user['email'].find('@usc.edu')
+    if index == -1:
+      return jsonify({ "error": "Email is not a USC email" }), 400
+
+
     if db.users.insert_one(user):
       return self.start_session(user)
 
@@ -40,11 +46,19 @@ class User:
   
   def login(self):
 
+    email = request.form.get('email')
+    password = request.form.get('password')
+
     user = db.users.find_one({
       "email": request.form.get('email')
     })
+    if user is none:
+      return "User does not exist", 404
 
-    # if user and pbkdf2_sha256.verify(request.form.get('password'), user['password']):
-    #   return self.start_session(user)
+    if user.password != password:
+      return "Incorrect password", 401
     
-    return jsonify({ "error": "Invalid login credentials" }), 401
+    if user and user['password'] == password:
+      return self.start_session(user)
+  
+    # return jsonify({ "error": "Invalid login credentials" }), 401

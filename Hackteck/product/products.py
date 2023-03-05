@@ -11,7 +11,7 @@ mongo = PyMongo(app)
 
 # Set up file upload directory and allowed file extensions
 app.config["UPLOAD_FOLDER"] = "static/uploads"
-app.config["ALLOWED_EXTENSIONS"] = {"png", "jpg", "jpeg", "gif"}
+app.config["ALLOWED_EXTENSIONS"] = {"png", "jpg", "jpeg"}
 
 # Function to check if a filename has an allowed extension
 def allowed_file(filename):
