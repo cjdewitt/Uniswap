@@ -1,6 +1,9 @@
 from flask import Flask, render_template, session, redirect
 from functools import wraps
 import pymongo
+from models import User
+# import routes
+
 
 app = Flask(__name__)
 app.secret_key = b'\xcc^\x91\xea\x17-\xd0W\x03\xa7\xf8J0\xac8\xc5'
@@ -21,8 +24,6 @@ def login_required(f):
   return wrap
 
 # Routes
-from user import routes
-
 @app.route('/')
 def home():
   return render_template('home.html')

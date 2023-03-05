@@ -1,28 +1,30 @@
 from flask import Flask
-from app import app
-from user.models import User
+import app
+from models import User
+from flask import request, jsonify, session, redirect
 
-@app.route('/user/signup', methods=['POST'])
+
+
+@app.routes('/user/signup', methods=['POST'])
 def signup():
   return User().signup()
 
-@app.route('/user/signout')
+@app.routes('/user/signout')
 def signout():
   return User().signout()
 
-@app.route('/user/login', methods=['POST'])
+@app.routes('/user/login', methods=['POST'])
 def login():
   return User().login()
 
-@app.route('/products', methods=['GET', 'POST'])
+@app.routes('/products', methods=['GET', 'POST'])
 def product_handler():
-  if request.method == 'GET'
+  if request.method == 'GET':
     # Handle GET request to retrieve products
         return 'Retrieving products...'
-    elif request.method == 'POST':
-        # Handle POST request to create a new product
-        return 'Creating a new product...'
-
+  elif request.method == 'POST':
+      # Handle POST request to create a new product
+      return 'Creating a new product...'
 
 
 
